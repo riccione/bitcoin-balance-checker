@@ -58,16 +58,16 @@ def check_balance(address):
             blockchain_info_array.append (
                 float( re.search( r'%s":(\d+),' % tag, htmltext ).group(1) ) )
     except:
-        print( "Error '%s'." % tag );
+        print( "Error '%s'." % tag )
         exit(1)
 
     for i, btc_tokens in enumerate(blockchain_info_array):
 
         sys.stdout.write ("%s \t= " % blockchain_tags_json[i])
         if btc_tokens > 0.0:
-            print( "%.8f Bitcoin" % (btc_tokens/SATOSHIS_PER_BTC) );
+            print( "%.8f Bitcoin" % (btc_tokens/SATOSHIS_PER_BTC) )
         else:
-            print( "0 Bitcoin" );
+            print( "0 Bitcoin" )
 
         if (SONG_BELL and blockchain_tags_json[i] == 'final_balance' and btc_tokens > 0.0): 
             
@@ -85,18 +85,17 @@ def check_balance(address):
 #Add the filename of your list of Bitcoin Addresses for check all.
 with open("list-addresses.txt") as file:
     for line in file:
-
-    	arq1 = open('addresses-with-balance-yay.txt', 'a')
+        arq1 = open('addresses-with-balance-yay.txt', 'a')
         address = str.strip(line)
         print ("__________________________________________________\n")
-        
+
         check_balance(address)
 
-print "__________________________________________________\n"
-print "Developed by: ~geniusprodigy"
-print "My contact on reddit: reddit.com/u/genius360\n"
-print "If this saved you time or helped, donations please for BTC Address:"
-print "1FrRd4iZRMU8i2Pbffzkac5u4KwUptmc7S"
+print("__________________________________________________\n")
+print("Developed by: ~geniusprodigy")
+print("My contact on reddit: reddit.com/u/genius360\n")
+print("If this saved you time or helped, donations please for BTC Address:")
+print("1FrRd4iZRMU8i2Pbffzkac5u4KwUptmc7S")
 arq1 = open('addresses-with-balance-yay.txt', 'a')
 arq1.write("\nDeveloped by: ~geniusprodigy. If this saved you time or helped, donations please for BTC Address: 1FrRd4iZRMU8i2Pbffzkac5u4KwUptmc7S")
 arq1.close()
