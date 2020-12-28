@@ -6,6 +6,8 @@
 import sys
 import re
 from time import sleep
+import os
+from tqdm import tqdm
 
 try:    # if is python3
     from urllib.request import urlopen
@@ -19,7 +21,7 @@ def check_balance(address):
     SONG_BELL = True
 
     #Add time different of 0 if you need more security on the checks
-    WARN_WAIT_TIME = 0
+    WARN_WAIT_TIME = 15
 
     blockchain_tags_json = [ 
         'total_received',
@@ -83,8 +85,10 @@ def check_balance(address):
                 sleep(WARN_WAIT_TIME)
 
 #Add the filename of your list of Bitcoin Addresses for check all.
-with open("list-addresses.txt") as file:
-    for line in file:
+filename = "list-addresses.txt"
+num_lines = sum(1 for line in open(filename))
+with open(filename) as file:
+    for line in tqdm(file, total=num_lines):
         arq1 = open('addresses-with-balance-yay.txt', 'a')
         address = str.strip(line)
         print ("__________________________________________________\n")
